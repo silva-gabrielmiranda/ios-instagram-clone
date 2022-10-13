@@ -12,6 +12,7 @@
 		A766458728E10B5400A36F68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A766458628E10B5400A36F68 /* Assets.xcassets */; };
 		A766458A28E10B5400A36F68 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A766458928E10B5400A36F68 /* Preview Assets.xcassets */; };
 		A766459728E1379F00A36F68 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A766459628E1379F00A36F68 /* Main.swift */; };
+		A79C7C1D28F78433003B7172 /* NewStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79C7C1C28F78433003B7172 /* NewStory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		A766458628E10B5400A36F68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A766458928E10B5400A36F68 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A766459628E1379F00A36F68 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		A79C7C1C28F78433003B7172 /* NewStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				A766458228E10B5100A36F68 /* instagram_cloneApp.swift */,
 				A766458428E10B5100A36F68 /* Story.swift */,
 				A766459628E1379F00A36F68 /* Main.swift */,
+				A79C7C1C28F78433003B7172 /* NewStory.swift */,
 				A766458628E10B5400A36F68 /* Assets.xcassets */,
 				A766458828E10B5400A36F68 /* Preview Content */,
 			);
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A79C7C1D28F78433003B7172 /* NewStory.swift in Sources */,
 				A766459728E1379F00A36F68 /* Main.swift in Sources */,
 				A766458528E10B5100A36F68 /* Story.swift in Sources */,
 				A766458328E10B5100A36F68 /* instagram_cloneApp.swift in Sources */,
