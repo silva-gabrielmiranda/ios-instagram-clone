@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct Main: View {
+    
+    @State var names = ["Aimbotkin", "Andresto", "Applejuice", "Arizona", "Afraid", "Auron", "Badboy", "Baddie", "Beard", "Beverly", "Bison", "Blackbird", "Blade", "Blakemore", "Boatswain", "Boogerman", "Brockley", "Browski", "Bullet", "Bunny", "Butcher", "Chester", "Churchill", "Cliffhanger", "Condor", "Cook", "Cougar", "Coyote", "Crooked", "Cross", "Dakota", "Dawg", "Deceit", "Denver", "Diggi", "Donutop", "Duke", "Dustin", "Enzo", "Esquilo", "Father", "Firion", "Floridaman", "Frenzy", "Foxy", "Garandthumb", "Goat", "Golden", "Grandpa", "Grim", "Grommet", "Gunporn", "Handsome", "Haunted", "Hellshrimp", "Honorable", "Hypno", "Instructor", "Ironfists", "Iowa", "James", "Jeff", "Jersey", "John", "Juggernaut", "Justkilo", "Kentucky", "Lancaster", "Lee", "Legia", "Litton", "Lost", "Lunar", "Madknight", "Mamba", "Marooner", "Meldon", "Melo", "Michigan", "Mike", "Momma", "Mortal", "Mother", "Nevada", "Nine-hole", "Noisy", "Nukem", "Ocean", "Oklahoma", "OneEye", "Oskar", "Philbo", "Quebec", "Racoon", "Rage", "Rambo", "Rassler", "Receit", "Rib-eye", "Riot", "Rock", "Rocket", "Ronny", "Rossler", "RoughDog", "Scar", "Scottsdale", "Seafarer", "Shadow", "SharkBait", "Sharkkiller", "Sherman", "Sherifu", "Shifty", "Slayer", "Sly", "Snake", "Sneaky", "Sniperlife", "Solem", "Solidus", "Spectator-6", "Spyke", "Stamper", "Striker", "Texas", "Three-Teeth", "Trent", "Trickster", "Triggerhappy", "Two-Finger", "Vicious", "Victor", "Voodoo", "Voss", "Wadley", "Weasel", "Whale-Eye", "Whisky", "Whitemane", "Woodrow", "Wrath", "Zed", "Zero-Zero"].shuffled()
+    
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(0..<5, id: \.self){ _ in
-                        Story(size: 80, borderThickness: 5)
+                    NewStory(size: 80)
+                    ForEach(names[0..<10].indices, id: \.self){ index in
+                        Story(size: 80, userName: names[index])
                     }
                 }
             }

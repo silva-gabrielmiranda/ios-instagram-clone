@@ -12,6 +12,7 @@ struct instagram_cloneApp: App {
     var body: some Scene {
         WindowGroup {
             Main().preferredColorScheme(.dark)
+//            NewStory(size: 200)
         }
     }
 }
