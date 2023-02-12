@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct Story: View {
+struct StoryMiniature: View {
     
     var size: CGFloat
-    var userName: String
+    var story: Story
     var borderThickness: CGFloat = 2
     var imagePadding: CGFloat = 5
     var fontSize: CGFloat = 10
@@ -30,13 +30,13 @@ struct Story: View {
                         ),
                             lineWidth: borderThickness
                         )
-                Image("profile2")
+                Image(story.profilePicture)
                     .resizable()
                     .clipShape(Circle())
                     .padding(imagePadding)
             }
                 .frame(width: size, height: size)
-            Text(userName)
+            Text(story.username)
                 .font(.system(size: fontSize))
         }
     }
