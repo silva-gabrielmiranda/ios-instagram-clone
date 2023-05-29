@@ -27,11 +27,15 @@ struct StoryView: View {
                         Button("<") {
                             presentationMode.wrappedValue.dismiss()
                         }
-                        Image(story.profilePicture)
-                            .resizable()
-                            .clipShape(Circle())
-                            .frame(width: geometry.size.width * 0.1, height: geometry.size.width * 0.1)
-                        Text("\(story.username)")
+                        AsyncImage(url: story.profile.pictureURL) { image in
+                            image
+                                .resizable()
+                                .clipShape(Circle())
+                                .frame(width: geometry.size.width * 0.1, height: geometry.size.width * 0.1)
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        Text("\(story.profile.username)")
                             .font(Font.body.bold())
                         Spacer()
                     }

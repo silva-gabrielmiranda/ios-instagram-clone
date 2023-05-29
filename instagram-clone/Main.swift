@@ -9,7 +9,16 @@ import SwiftUI
 
 struct Main: View {
     
-    var stories: StoriesViewModel = StoriesViewModel()
+    var profiles: ProfileViewModel
+    var stories: StoriesViewModel
+    @ObservedObject
+    var posts: PostsViewModel
+    
+    init() {
+        profiles = ProfileViewModel()
+        stories = StoriesViewModel(profileViewModel: profiles)
+        posts = PostsViewModel(profileViewModel: profiles)
+    }
     
     var body: some View {
         NavigationView {
@@ -18,7 +27,7 @@ struct Main: View {
                 GeometryReader { geometry in
                     ScrollView(showsIndicators: false) {
                         StoriesBarView(stories: stories.model)
-                        PostsView(geometry: geometry)
+                        PostFeed(postsViewModel: posts, geometry: geometry)
                     }
                 }
             }

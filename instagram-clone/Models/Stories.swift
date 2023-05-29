@@ -10,19 +10,24 @@ import Foundation
 struct Stories {
     var stories: [Story]
     
+    init() {
+        stories = []
+    }
+    
     mutating func addStory(_ story: Story){
         stories.append(story)
     }
 }
 
-struct Story {
-    let username: String
-    let profilePicture: String = "profile2"
+struct Story  {
+    
+    let profile: Profile
     var content: [StoryContent]
     
     mutating func addStoryContent(_ storyContent: StoryContent){
         content.append(storyContent)
     }
+    
 }
 
 struct StoryContent {

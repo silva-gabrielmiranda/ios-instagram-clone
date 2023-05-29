@@ -30,13 +30,18 @@ struct StoryMiniature: View {
                         ),
                             lineWidth: borderThickness
                         )
-                Image(story.profilePicture)
-                    .resizable()
-                    .clipShape(Circle())
-                    .padding(imagePadding)
+                AsyncImage(url: story.profile.pictureURL) { image in
+                    image
+                        .resizable()
+                        .clipShape(Circle())
+                        .padding(imagePadding)
+                } placeholder: {
+                    ProgressView()
+                }
+                    
             }
                 .frame(width: size, height: size)
-            Text(story.username)
+            Text(story.profile.username)
                 .font(.system(size: fontSize))
         }
     }

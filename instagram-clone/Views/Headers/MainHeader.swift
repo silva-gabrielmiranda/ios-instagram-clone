@@ -17,9 +17,9 @@ struct MainHeader: View {
         HStack(alignment: .center) {
             logo
             Spacer()
-            newButton(.new, width: iconSize, heigth: iconSize, padding: iconPadding)
-            newButton(.notifications, width: iconSize, heigth: iconSize, padding: iconPadding)
-            newButton(.direct, width: iconSize, heigth: iconSize, padding: iconPadding)
+            Icon(option: .new)
+            Icon(option: .notifications, height: 22.5)
+            Icon(option: .share)
         }
             .padding(.vertical)
     }
@@ -30,19 +30,5 @@ struct MainHeader: View {
             .colorInvert()
             .frame(width: logoSize.width, height: logoSize.height)
             .padding(.horizontal)
-    }
-    
-    @ViewBuilder
-    private func newButton(_ icon: Icons.options, width: CGFloat, heigth: CGFloat, padding: CGFloat) -> some View {
-        Image(systemName: Icons().systemName[icon]!)
-            .resizable()
-            .frame(width: width, height: heigth)
-            .padding(.horizontal, padding)
-    }
-}
-
-struct MainHeader_Previews: PreviewProvider {
-    static var previews: some View {
-        MainHeader()
     }
 }

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PostView: View {
     
+    var postsViewModel: PostsViewModel
+    var post: Post
     var geometry: GeometryProxy
     
     var mediaMaxSize: CGSize {
@@ -22,52 +24,66 @@ struct PostView: View {
                 .colorInvert()
             VStack(alignment: .leading) {
                 HStack {
-                    Image("profile2")
-                        .resizable()
-                        .clipShape(Circle())
-                        .frame(width: 40, height: 40)
-                    Text("miraandao")
+                    AsyncImage(url: post.owner.pictureURL) { image in
+                        image
+                            .resizable()
+                            .clipShape(Circle())
+                            .frame(width: 40, height: 40)
+                    } placeholder: {
+                        ZStack {
+                            Rectangle()
+                                .colorInvert()
+                                .clipShape(Circle())
+                                .frame(width: 40, height: 40)
+                            ProgressView()
+                        }
+                    }
+                    
+                    Text(post.owner.username)
                     Spacer()
                 }
                     .padding(10)
-                AsyncImage(url: URL(string: "https://playzuando.com.br/wp-content/uploads/2022/06/Escape-From-Tarkov-Arena-is-a-new-standalone-FPS-coming.jpg")) { image in
+                AsyncImage(url: post.mediaURL) { image in
                     image
                         .resizable()
                 } placeholder: {
-                    ProgressView()
+                    ZStack {
+                        Rectangle()
+                            .colorInvert()
+                        ProgressView()
+                    }
                 }
                     .frame(maxHeight: mediaMaxSize.height)
                 HStack {
-                    newButton(.notifications)
-                    newButton(.message)
-                    newButton(.direct)
+                    Icon(option: post.isLiked ? .liked : .like)
+                        .onTapGesture {
+                            postsViewModel.like(post)
+                        }
+                    Icon(option: .directMessages)
+                    Icon(option: .share)
                     Spacer()
-                    newButton(.bookmark)
+                    Icon(option: post.isSaved ? .bookmarked : .bookmark, width: 20)
+                        .onTapGesture {
+                            postsViewModel.save(post)
+                        }
                 }
                     .padding(10)
                 Group {
-                    Text("98 curtidas")
+                    Text("\(post.likes) curtidas")
                         .font(Font.body.bold())
-                    Text("Ver todos 150 comentários")
+                    Text("Ver todos \(post.comments) comentários")
                         .foregroundColor(.gray)
                         .font(Font.system(size: 14))
-                    Text("Há 9 horas")
+                    Text(post.timeDiffToToday)
                         .foregroundColor(.gray)
                         .font(Font.system(size: 12))
                 }
                     .padding(.horizontal, 10)
-                    .padding(.vertical, 0.5)
+                    .padding(.bottom, 1)
             }
         }
     }
     
-    @ViewBuilder
-    private func newButton(_ icon: Icons.options, width: CGFloat = 25, heigth: CGFloat = 25, padding: CGFloat = 10) -> some View {
-        Image(systemName: Icons().systemName[icon]!)
-            .resizable()
-            .frame(width: width, height: heigth)
-            .padding(.horizontal, padding)
-    }
     
     private struct CONSTANTS {
         static let mediaScale: CGFloat = 0.9
